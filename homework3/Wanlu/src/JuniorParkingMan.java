@@ -9,14 +9,12 @@ public class JuniorParkingMan {
     }
 
     public int park(String plateNum) {
-        int serialNum = 0;
         for (ParkingLot parkingLot : parkingLots) {
-            serialNum = parkingLot.park(plateNum);
-            if (serialNum != 0) {
-                break;
+            if (parkingLot.getVacancy() > 0) {
+                return parkingLot.park(plateNum);
             }
         }
-        return serialNum;
+        return 0;
     }
 
     public boolean getCar(String plateNum, int serialNum) {
