@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class JuniorParkingMan {
 
-    protected ArrayList<ParkingLot> parkingLots;
+    private ArrayList<ParkingLot> parkingLots;
 
     public JuniorParkingMan(ArrayList<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;

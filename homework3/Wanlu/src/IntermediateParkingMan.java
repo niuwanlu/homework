@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 
-public class IntermediateParkingMan {
+public class IntermediateParkingMan extends JuniorParkingMan{
     private ArrayList<ParkingLot> parkingLots;
 
     public IntermediateParkingMan(ArrayList<ParkingLot> parkingLots) {
+        super(parkingLots);
         this.parkingLots = parkingLots;
     }
 
@@ -19,12 +20,4 @@ public class IntermediateParkingMan {
         return parkingLots.get(lotNumWithMaxVacancy).park(plateNum);
     }
 
-    public boolean getCar(String plateNum, int serialNum) {
-        for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLot.leave(plateNum, serialNum)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
