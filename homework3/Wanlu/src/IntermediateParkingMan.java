@@ -9,15 +9,21 @@ public class IntermediateParkingMan extends JuniorParkingMan{
     }
 
     public int park(String plateNum) {
+        int lotNumWithMaxVacancy = getLotNumWithMaxVacancy();
+        return parkingLots.get(lotNumWithMaxVacancy).park(plateNum);
+    }
+
+    private int getLotNumWithMaxVacancy() {
         int maxVacancy = 0;
         int lotNumWithMaxVacancy = 0;
         for (int parkingLotNum = 0;  parkingLotNum < parkingLots.size();  parkingLotNum++) {
-            if (parkingLots.get(parkingLotNum).getVacancy() > maxVacancy) {
-                maxVacancy = parkingLots.get(parkingLotNum).getVacancy();
+            int currentVacancy = parkingLots.get(parkingLotNum).getVacancy();
+            if (currentVacancy > maxVacancy) {
+                maxVacancy = currentVacancy;
                 lotNumWithMaxVacancy = parkingLotNum;
             }
         }
-        return parkingLots.get(lotNumWithMaxVacancy).park(plateNum);
+        return lotNumWithMaxVacancy;
     }
 
 }

@@ -10,14 +10,20 @@ public class SeniorParkingMan extends JuniorParkingMan{
     }
 
     public int park(String plateNum) {
+        int lotNumWithMaxVacancyRatio = getLotNumWithMaxVacancyRatio();
+        return parkingLots.get(lotNumWithMaxVacancyRatio).park(plateNum);
+    }
+
+    private int getLotNumWithMaxVacancyRatio() {
         double maxVacancyRatio = 0;
         int lotNumWithMaxVacancyRatio = 0;
         for (int parkingLotNum = 0;  parkingLotNum < parkingLots.size();  parkingLotNum++) {
-            if (parkingLots.get(parkingLotNum).getVacancyRatio() > maxVacancyRatio) {
-                maxVacancyRatio = parkingLots.get(parkingLotNum).getVacancyRatio();
+            double currentVacancyRatio = parkingLots.get(parkingLotNum).getVacancyRatio();
+            if (currentVacancyRatio > maxVacancyRatio) {
+                maxVacancyRatio = currentVacancyRatio;
                 lotNumWithMaxVacancyRatio = parkingLotNum;
             }
         }
-        return parkingLots.get(lotNumWithMaxVacancyRatio).park(plateNum);
+        return lotNumWithMaxVacancyRatio;
     }
 }
