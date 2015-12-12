@@ -3,20 +3,17 @@ import java.util.HashMap;
 public class ParkingLot {
 
     private int capacity;
-    private int takenNum;
     private int serialNum;
     private HashMap<Integer, String> parkingCars;
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
-        this.takenNum = 0;
         this.serialNum = 0;
-        parkingCars = new HashMap<Integer, String>(capacity);
+        parkingCars = new HashMap<Integer, String>();
     }
 
     public int park(String plateNum) {
-        if (takenNum < capacity) {
-            takenNum++;
+        if (parkingCars.size() < capacity) {
             serialNum++;
             parkingCars.put(serialNum, plateNum);
             return serialNum;
@@ -25,16 +22,15 @@ public class ParkingLot {
     }
 
     public boolean leave(String plateNum, int serialNum) {
-        if (parkingCars.get(serialNum) == null) {
-            return false;
-        }
-
-        if (parkingCars.get(serialNum).equals(plateNum)) {
+        if (plateNum.equals(parkingCars.get(serialNum))) {
             parkingCars.remove(serialNum);
-            takenNum--;
             return true;
         }
-
         return false;
     }
+
+    public int getEmptySpaceCount() {
+        return capacity - parkingCars.size();
+    }
+
 }

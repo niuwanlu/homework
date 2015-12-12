@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class ParkingMan {
+public class JuniorParkingMan {
 
     public static final int MAX_LOT_CAPACITY = 10;
-    private ArrayList<ParkingLot> parkingLots;
+    protected ArrayList<ParkingLot> parkingLots;
 
-    public ParkingMan(ArrayList<ParkingLot> parkingLots) {
+    public JuniorParkingMan(ArrayList<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 

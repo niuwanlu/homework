@@ -38,4 +38,11 @@ public class ParkingLotTest {
         parkingLot.park("ShanA123");
         assertEquals(false, parkingLot.leave("ShanA123", 2));
     }
+
+    @Test
+    public void testGetEmptySpaceCount() throws Exception {
+        ParkingLot parkingLot = new ParkingLot(5);
+        parkingLot.park("ShanA123");
+        assertEquals(4, parkingLot.getEmptySpaceCount());
+    }
 }
