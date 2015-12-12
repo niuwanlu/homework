@@ -46,4 +46,11 @@ public class ParkingLotTest {
         parkingLot.park("ShanA123");
         assertEquals(4, parkingLot.getVacancy());
     }
+
+    @Test
+    public void testGetVacancyRatio() throws Exception {
+        ParkingLot parkingLot = new ParkingLot(5);
+        parkingLot.park("ShanA123");
+        assertEquals(0.8, parkingLot.getVacancyRatio());
+    }
 }

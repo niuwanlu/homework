@@ -8,7 +8,6 @@ import static junit.framework.TestCase.assertEquals;
 
 public class IntermediateParkingManTest {
 
-
     private ArrayList<ParkingLot> parkingLots;
     private IntermediateParkingMan intermediateParkingMan;
 

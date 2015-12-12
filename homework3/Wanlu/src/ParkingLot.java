@@ -32,4 +32,8 @@ public class ParkingLot {
     public int getVacancy() {
         return capacity - parkingCars.size();
     }
+
+    public double getVacancyRatio() {
+        return (double)getVacancy()/capacity;
+    }
 }
