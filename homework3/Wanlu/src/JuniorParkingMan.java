@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class JuniorParkingMan {
 
-    public static final int MAX_LOT_CAPACITY = 10;
     protected ArrayList<ParkingLot> parkingLots;
 
     public JuniorParkingMan(ArrayList<ParkingLot> parkingLots) {
@@ -11,19 +10,21 @@ public class JuniorParkingMan {
 
     public int park(String plateNum) {
         int serialNum = 0;
-        for (int i = 0; i < parkingLots.size(); i++) {
-            ParkingLot parkingLot = parkingLots.get(i);
+        for (ParkingLot parkingLot : parkingLots) {
             serialNum = parkingLot.park(plateNum);
             if (serialNum != 0) {
-                return i*MAX_LOT_CAPACITY + serialNum;
+                break;
             }
         }
         return serialNum;
     }
 
     public boolean getCar(String plateNum, int serialNum) {
-        int lotNum = serialNum / 10;
-        int subSerialNum = serialNum % MAX_LOT_CAPACITY;
-        return parkingLots.get(lotNum).leave(plateNum, subSerialNum);
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.leave(plateNum, serialNum)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

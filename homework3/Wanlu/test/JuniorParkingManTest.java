@@ -49,18 +49,12 @@ public class JuniorParkingManTest {
     }
 
     @Test
-    public void testSerialNumContainsParkingLotNum() throws Exception {
+    public void testGetCarBySerialNum() throws Exception {
         int serialNum1 = juniorParkingMan.park("ShanA123");
         int serialNum2 = juniorParkingMan.park("ShanA234");
         int serialNum3 = juniorParkingMan.park("ShanA345");
-        assertEquals(0, serialNum1/10);
-        assertEquals(0, serialNum2/10);
-        assertEquals(1, serialNum3 / 10);
-    }
-
-    @Test
-    public void testGetCarBySerialNum() throws Exception {
-        int serialNum = juniorParkingMan.park("ShanA123");
-        assertEquals(true, juniorParkingMan.getCar("ShanA123", serialNum));
+        assertEquals(true, juniorParkingMan.getCar("ShanA123", serialNum1));
+        assertEquals(true, juniorParkingMan.getCar("ShanA234", serialNum2));
+        assertEquals(true, juniorParkingMan.getCar("ShanA345", serialNum3));
     }
 }
