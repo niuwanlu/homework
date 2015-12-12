@@ -13,7 +13,7 @@ public class ParkingLot {
     }
 
     public int park(String plateNum) {
-        if (parkingCars.size() < capacity) {
+        if (getVacancy() > 0) {
             serialNum++;
             parkingCars.put(serialNum, plateNum);
             return serialNum;
@@ -29,8 +29,7 @@ public class ParkingLot {
         return false;
     }
 
-    public int getEmptySpaceCount() {
+    public int getVacancy() {
         return capacity - parkingCars.size();
     }
-
 }
