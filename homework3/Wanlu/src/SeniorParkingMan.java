@@ -9,7 +9,7 @@ public class SeniorParkingMan extends JuniorParkingMan{
         this.parkingLots = parkingLots;
     }
 
-    public int park(String plateNum) {
+    public String park(String plateNum) {
         int lotNumWithMaxVacancyRatio = getLotNumWithMaxVacancyRatio();
         return parkingLots.get(lotNumWithMaxVacancyRatio).park(plateNum);
     }

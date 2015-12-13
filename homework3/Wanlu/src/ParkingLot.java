@@ -1,32 +1,26 @@
 import java.util.HashMap;
+import java.util.UUID;
 
 public class ParkingLot {
 
-    private int capacity;
-    private int serialNum;
-    private HashMap<Integer, String> parkingCars;
+    final private int capacity;
+    private HashMap<String, String> parkingCars = new HashMap<String, String>();
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
-        this.serialNum = 0;
-        parkingCars = new HashMap<Integer, String>();
     }
 
-    public int park(String plateNum) {
+    public String park(String plateNum) {
         if (getVacancy() > 0) {
-            serialNum++;
+            String serialNum = UUID.randomUUID().toString();
             parkingCars.put(serialNum, plateNum);
             return serialNum;
         }
-        return 0;
+        return "0";
     }
 
-    public boolean leave(String plateNum, int serialNum) {
-        if (plateNum.equals(parkingCars.get(serialNum))) {
-            parkingCars.remove(serialNum);
-            return true;
-        }
-        return false;
+    public String leave(String serialNum) {
+        return parkingCars.remove(serialNum);
     }
 
     public int getVacancy() {

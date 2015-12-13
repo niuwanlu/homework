@@ -22,24 +22,18 @@ public class IntermediateParkingManTest {
 
     @Test
     public void testParkingManParkSuccess() throws Exception {
-        assertEquals(1, intermediateParkingMan.park("ShanA123"));
+        assertNotSame("0", intermediateParkingMan.park("ShanA123"));
     }
 
     @Test
     public void testParkingManWillParkCanInTheLotHavingMostVacancy() throws Exception {
         intermediateParkingMan.park("ShanA123");
-        assertNotSame(0, parkingLots.get(1).park("ShanA234"));
-        assertNotSame(0, parkingLots.get(1).park("ShanA345"));
-        assertEquals(0, parkingLots.get(1).park("ShanA345"));
+        assertEquals(2, parkingLots.get(1).getVacancy());
     }
 
     @Test
     public void testGetCarBySerialNum() throws Exception {
-        int serialNum1 = intermediateParkingMan.park("ShanA123");
-        int serialNum2 = intermediateParkingMan.park("ShanA234");
-        int serialNum3 = intermediateParkingMan.park("ShanA345");
-        assertEquals(true, intermediateParkingMan.getCar("ShanA123", serialNum1));
-        assertEquals(true, intermediateParkingMan.getCar("ShanA234", serialNum2));
-        assertEquals(true, intermediateParkingMan.getCar("ShanA345", serialNum3));
+        String serialNum = intermediateParkingMan.park("ShanA123");
+        assertEquals("ShanA123", intermediateParkingMan.getCar(serialNum));
     }
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class IntermediateParkingMan extends JuniorParkingMan{
+
     private ArrayList<ParkingLot> parkingLots;
 
     public IntermediateParkingMan(ArrayList<ParkingLot> parkingLots) {
@@ -8,7 +9,7 @@ public class IntermediateParkingMan extends JuniorParkingMan{
         this.parkingLots = parkingLots;
     }
 
-    public int park(String plateNum) {
+    public String park(String plateNum) {
         int lotNumWithMaxVacancy = getLotNumWithMaxVacancy();
         return parkingLots.get(lotNumWithMaxVacancy).park(plateNum);
     }

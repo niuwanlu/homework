@@ -8,21 +8,22 @@ public class JuniorParkingMan {
         this.parkingLots = parkingLots;
     }
 
-    public int park(String plateNum) {
+    public String park(String plateNum) {
         for (ParkingLot parkingLot : parkingLots) {
             if (parkingLot.getVacancy() > 0) {
                 return parkingLot.park(plateNum);
             }
         }
-        return 0;
+        return "0";
     }
 
-    public boolean getCar(String plateNum, int serialNum) {
+    public String getCar(String serialNum) {
         for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLot.leave(plateNum, serialNum)) {
-                return true;
+            String plateNum = parkingLot.leave(serialNum);
+            if (plateNum != null) {
+                return plateNum;
             }
         }
-        return false;
+        return null;
     }
 }

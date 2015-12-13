@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static junit.framework.Assert.assertNotSame;
 import static junit.framework.TestCase.assertEquals;
 
 public class SeniorParkingManTest {
@@ -21,24 +22,21 @@ public class SeniorParkingManTest {
 
     @Test
     public void testParkingManParkSuccess() throws Exception {
-        assertEquals(1, seniorParkingMan.park("ShanA123"));
+        assertNotSame("0", seniorParkingMan.park("ShanA123"));
     }
 
     @Test
     public void testParkingManWillParkToTheLotWithHighestVacancyRatio() throws Exception {
         parkingLots.get(0).park("ShanA123");
         parkingLots.get(1).park("ShanA234");
+        assertEquals(1, parkingLots.get(2).getVacancy());
         seniorParkingMan.park("ShanA345");
-        assertEquals(0, parkingLots.get(2).park("ShanA456"));
+        assertEquals(0, parkingLots.get(2).getVacancy());
     }
 
     @Test
     public void testGetCarBySerialNum() throws Exception {
-        int serialNum1 = seniorParkingMan.park("ShanA123");
-        int serialNum2 = seniorParkingMan.park("ShanA234");
-        int serialNum3 = seniorParkingMan.park("ShanA345");
-        assertEquals(true, seniorParkingMan.getCar("ShanA123", serialNum1));
-        assertEquals(true, seniorParkingMan.getCar("ShanA234", serialNum2));
-        assertEquals(true, seniorParkingMan.getCar("ShanA345", serialNum3));
+        String serialNum = seniorParkingMan.park("ShanA123");
+        assertEquals("ShanA123", seniorParkingMan.getCar(serialNum));
     }
 }
