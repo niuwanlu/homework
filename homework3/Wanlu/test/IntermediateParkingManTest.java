@@ -1,3 +1,6 @@
+import oo.ParkingMan;
+import oo.ParkingLot;
+import oo.finders.IntermediateFinder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +12,7 @@ import static junit.framework.TestCase.assertEquals;
 public class IntermediateParkingManTest {
 
     private ArrayList<ParkingLot> parkingLots;
-    private IntermediateParkingMan intermediateParkingMan;
+    private ParkingMan parkingMan;
 
     @Before
     public void setUp() throws Exception {
@@ -17,23 +20,23 @@ public class IntermediateParkingManTest {
         parkingLots.add(new ParkingLot(2));
         parkingLots.add(new ParkingLot(3));
         parkingLots.add(new ParkingLot(1));
-        intermediateParkingMan = new IntermediateParkingMan(parkingLots);
+        parkingMan = new ParkingMan(new IntermediateFinder(), parkingLots);
     }
 
     @Test
     public void testParkingManParkSuccess() throws Exception {
-        assertNotSame("0", intermediateParkingMan.park("ShanA123"));
+        assertNotSame("0", parkingMan.park("ShanA123"));
     }
 
     @Test
     public void testParkingManWillParkCanInTheLotHavingMostVacancy() throws Exception {
-        intermediateParkingMan.park("ShanA123");
+        parkingMan.park("ShanA123");
         assertEquals(2, parkingLots.get(1).getVacancy());
     }
 
     @Test
     public void testGetCarBySerialNum() throws Exception {
-        String serialNum = intermediateParkingMan.park("ShanA123");
-        assertEquals("ShanA123", intermediateParkingMan.getCar(serialNum));
+        String serialNum = parkingMan.park("ShanA123");
+        assertEquals("ShanA123", parkingMan.getCar(serialNum));
     }
 }

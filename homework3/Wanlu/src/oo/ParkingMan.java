@@ -1,20 +1,21 @@
+package oo;
+
+import oo.finders.Finder;
+
 import java.util.ArrayList;
 
-public class JuniorParkingMan {
+public class ParkingMan {
 
-    private ArrayList<ParkingLot> parkingLots;
+    protected Finder finder;
+    protected ArrayList<ParkingLot> parkingLots;
 
-    public JuniorParkingMan(ArrayList<ParkingLot> parkingLots) {
+    public ParkingMan(Finder finder, ArrayList<ParkingLot> parkingLots) {
+        this.finder = finder;
         this.parkingLots = parkingLots;
     }
 
     public String park(String plateNum) {
-        for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLot.getVacancy() > 0) {
-                return parkingLot.park(plateNum);
-            }
-        }
-        return "0";
+        return finder.getParkingLot(parkingLots).park(plateNum);
     }
 
     public String getCar(String serialNum) {

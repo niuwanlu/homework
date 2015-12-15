@@ -1,3 +1,6 @@
+import oo.ParkingMan;
+import oo.ParkingLot;
+import oo.finders.SeniorFinder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +12,7 @@ import static junit.framework.TestCase.assertEquals;
 public class SeniorParkingManTest {
 
     private ArrayList<ParkingLot> parkingLots;
-    private SeniorParkingMan seniorParkingMan;
+    private ParkingMan seniorParkingMan;
 
     @Before
     public void setUp() throws Exception {
@@ -17,7 +20,8 @@ public class SeniorParkingManTest {
         parkingLots.add(new ParkingLot(2));
         parkingLots.add(new ParkingLot(3));
         parkingLots.add(new ParkingLot(1));
-        seniorParkingMan = new SeniorParkingMan(parkingLots);
+        final ArrayList<ParkingLot> parkingLots1 = parkingLots;
+        seniorParkingMan = new ParkingMan(new SeniorFinder(), parkingLots1);
     }
 
     @Test
