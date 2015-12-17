@@ -12,7 +12,7 @@ import static junit.framework.TestCase.assertNotSame;
 
 public class ParkingManagerTest {
 
-    private ParkingManager parkingManager;
+    private Packer parkingManager;
 
     @Before
     public void setUp() throws Exception {
@@ -21,9 +21,9 @@ public class ParkingManagerTest {
         ArrayList<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        ParkingMan parkingMan1 = new ParkingMan(new SimpleFinder(), parkingLots);
-        ParkingMan parkingMan2 = new ParkingMan(new IntermediateFinder(), parkingLots);
-        ArrayList<ParkingMan> parkingMans = new ArrayList<ParkingMan>();
+        Packer parkingMan1 = new ParkingMan(new SimpleFinder(), parkingLots);
+        Packer parkingMan2 = new ParkingMan(new IntermediateFinder(), parkingLots);
+        ArrayList<Packer> parkingMans = new ArrayList<Packer>();
         parkingMans.add(parkingMan1);
         parkingMans.add(parkingMan2);
         parkingManager = new ParkingManager(parkingMans);

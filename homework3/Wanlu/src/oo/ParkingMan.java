@@ -4,7 +4,7 @@ import oo.finders.Finder;
 
 import java.util.ArrayList;
 
-public class ParkingMan {
+public class ParkingMan implements Packer{
 
     protected Finder finder;
     protected ArrayList<ParkingLot> parkingLots;

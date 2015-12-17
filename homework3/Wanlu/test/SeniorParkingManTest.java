@@ -1,3 +1,4 @@
+import oo.Packer;
 import oo.ParkingMan;
 import oo.ParkingLot;
 import oo.finders.SeniorFinder;
@@ -12,7 +13,7 @@ import static junit.framework.TestCase.assertEquals;
 public class SeniorParkingManTest {
 
     private ArrayList<ParkingLot> parkingLots;
-    private ParkingMan seniorParkingMan;
+    private Packer seniorParkingMan;
 
     @Before
     public void setUp() throws Exception {

@@ -2,15 +2,16 @@ package oo;
 
 import java.util.ArrayList;
 
-public class ParkingManager {
-    private ArrayList<ParkingMan> parkingMans;
+public class ParkingManager implements Packer {
+    private ArrayList<Packer> packers;
 
-    public ParkingManager(ArrayList<ParkingMan> parkingMans) {
-        this.parkingMans = parkingMans;
+    public ParkingManager(ArrayList<Packer> packers) {
+        this.packers = packers;
     }
 
+    @Override
     public String park(String plateNumer) {
-        for (ParkingMan parkingMan : parkingMans) {
+        for (Packer parkingMan : packers) {
             String serialNum = parkingMan.park(plateNumer);
             if (!serialNum.equals("0")) {
                 return serialNum;
@@ -19,8 +20,9 @@ public class ParkingManager {
         return "0";
     }
 
+    @Override
     public String getCar(String serialNum) {
-        for (ParkingMan parkingMan : parkingMans) {
+        for (Packer parkingMan : packers) {
             String plateNum = parkingMan.getCar(serialNum);
             if (!(plateNum == null)) {
                 return plateNum;
