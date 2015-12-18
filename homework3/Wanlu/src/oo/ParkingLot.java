@@ -12,6 +12,10 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public String park(String plateNum) {
         if (getVacancy() > 0) {
             String serialNum = UUID.randomUUID().toString();
@@ -31,5 +35,9 @@ public class ParkingLot {
 
     public double getVacancyRatio() {
         return (double)getVacancy()/capacity;
+    }
+
+    public int getParkedCarNumber() {
+        return parkingCars.size();
     }
 }

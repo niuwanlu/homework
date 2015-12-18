@@ -8,6 +8,7 @@ public class ParkingMan implements Packer{
 
     protected Finder finder;
     protected ArrayList<ParkingLot> parkingLots;
+    private static String name = "ParkingMan";
 
     public ParkingMan(Finder finder, ArrayList<ParkingLot> parkingLots) {
         this.finder = finder;
@@ -26,5 +27,25 @@ public class ParkingMan implements Packer{
             }
         }
         return null;
+    }
+
+    public String report() {
+        return name + " (" + String.valueOf(getParkedCarNumber()) + "/" + String.valueOf(getCapacity()) + ")";
+    }
+
+    private int getParkedCarNumber() {
+        int parkedCarNumber = 0;
+        for (ParkingLot parkingLot : parkingLots) {
+            parkedCarNumber += parkingLot.getParkedCarNumber();
+        }
+        return parkedCarNumber;
+    }
+
+    private int getCapacity() {
+        int capacity = 0;
+        for (ParkingLot parkingLot : parkingLots) {
+            capacity += parkingLot.getCapacity();
+        }
+        return capacity;
     }
 }

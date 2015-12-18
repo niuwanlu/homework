@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ParkingManager implements Packer {
     private ArrayList<Packer> packers;
+    private static String name = "ParkingManager";
 
     public ParkingManager(ArrayList<Packer> packers) {
         this.packers = packers;
@@ -29,5 +30,17 @@ public class ParkingManager implements Packer {
             }
         }
         return null;
+    }
+
+    @Override
+    public String report() {
+        String content = name;
+        for (Packer packer : packers) {
+            String[] reportLines = packer.report().split("\\n");
+            for (String line : reportLines) {
+                content += "\n-- " + line;
+            }
+        }
+        return content;
     }
 }

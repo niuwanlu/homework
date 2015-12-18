@@ -1,6 +1,6 @@
 import oo.Packer;
-import oo.ParkingMan;
 import oo.ParkingLot;
+import oo.ParkingMan;
 import oo.finders.SimpleFinder;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,5 +55,12 @@ public class ParkingManTest {
     public void testGetCarUnsuccessfullyByIncorrectSerialNum() throws Exception {
         String serialNum = parkingMan.park("ShanA123");
         assertEquals(null, parkingMan.getCar(serialNum+"1"));
+    }
+
+    @Test
+    public void testReport() throws Exception {
+        parkingMan.park("ShanA123");
+        parkingMan.park("ShanA234");
+        assertEquals("ParkingMan (2/4)", parkingMan.report());
     }
 }
