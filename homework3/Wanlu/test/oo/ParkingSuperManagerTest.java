@@ -73,6 +73,6 @@ public class ParkingSuperManagerTest {
                 + "-- ParkingManager\n"
                 + "-- -- ParkingMan (2/6)\n"
                 + "-- -- ParkingMan (1/4)";
-        assertEquals(expectedReport, superParkingManager.report());
+        assertEquals(expectedReport, superParkingManager.report().toString());
     }
 }

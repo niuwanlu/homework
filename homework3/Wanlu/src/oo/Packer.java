@@ -5,5 +5,5 @@ public interface Packer {
 
     String getCar(String serialNum);
 
-    String report();
+    StringBuilder report();
 }

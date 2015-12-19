@@ -29,8 +29,10 @@ public class ParkingMan implements Packer{
         return null;
     }
 
-    public String report() {
-        return name + " (" + String.valueOf(getParkedCarNumber()) + "/" + String.valueOf(getCapacity()) + ")";
+    public StringBuilder report() {
+        StringBuilder report = new StringBuilder();
+        report.append(name).append(" (").append(String.valueOf(getParkedCarNumber())).append("/").append(String.valueOf(getCapacity())).append(")");
+        return report;
     }
 
     private int getParkedCarNumber() {

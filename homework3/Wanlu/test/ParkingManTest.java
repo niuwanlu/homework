@@ -61,6 +61,6 @@ public class ParkingManTest {
     public void testReport() throws Exception {
         parkingMan.park("ShanA123");
         parkingMan.park("ShanA234");
-        assertEquals("ParkingMan (2/4)", parkingMan.report());
+        assertEquals("ParkingMan (2/4)", parkingMan.report().toString());
     }
 }

@@ -33,14 +33,15 @@ public class ParkingManager implements Packer {
     }
 
     @Override
-    public String report() {
-        String content = name;
+    public StringBuilder report() {
+        StringBuilder report = new StringBuilder();
+        report.append(name);
         for (Packer packer : packers) {
-            String[] reportLines = packer.report().split("\\n");
+            String[] reportLines = packer.report().toString().split("\\n");
             for (String line : reportLines) {
-                content += "\n-- " + line;
+                report.append("\n-- ").append(line);
             }
         }
-        return content;
+        return report;
     }
 }
