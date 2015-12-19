@@ -57,6 +57,8 @@ public class ParkingManagerTest {
         parkingMan2.park("ShanA456");
         parkingMan2.park("ShanA567");
         String expected = "ParkingManager\n-- ParkingMan (2/6)\n-- ParkingMan (3/8)";
-        assertEquals(expected, parkingManager.report().toString());
+        StringBuilder report = new StringBuilder();
+        parkingManager.generateReport(new Report(report));
+        assertEquals(expected, report.toString());
     }
 }

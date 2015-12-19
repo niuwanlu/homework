@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ParkingManager implements Packer {
     private ArrayList<Packer> packers;
-    private static String name = "ParkingManager";
+    public static String name = "ParkingManager";
 
     public ParkingManager(ArrayList<Packer> packers) {
         this.packers = packers;
@@ -33,15 +33,8 @@ public class ParkingManager implements Packer {
     }
 
     @Override
-    public StringBuilder report() {
-        StringBuilder report = new StringBuilder();
-        report.append(name);
-        for (Packer packer : packers) {
-            String[] reportLines = packer.report().toString().split("\\n");
-            for (String line : reportLines) {
-                report.append("\n-- ").append(line);
-            }
-        }
-        return report;
+    public void generateReport(Report report) {
+        report.parkingManagerReport(packers);
     }
+
 }

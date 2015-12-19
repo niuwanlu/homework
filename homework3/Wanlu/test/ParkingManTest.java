@@ -1,6 +1,7 @@
 import oo.Packer;
 import oo.ParkingLot;
 import oo.ParkingMan;
+import oo.Report;
 import oo.finders.SimpleFinder;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,8 +60,10 @@ public class ParkingManTest {
 
     @Test
     public void testReport() throws Exception {
+        StringBuilder report = new StringBuilder();
         parkingMan.park("ShanA123");
         parkingMan.park("ShanA234");
-        assertEquals("ParkingMan (2/4)", parkingMan.report().toString());
+        parkingMan.generateReport(new Report(report));
+        assertEquals("ParkingMan (2/4)", report.toString());
     }
 }
