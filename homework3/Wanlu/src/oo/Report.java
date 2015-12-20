@@ -20,7 +20,7 @@ public class Report {
             packer.generateReport(new Report(subReport));
             String[] reportLines = subReport.toString().split("\\n");
             for (String line : reportLines) {
-                getReport().append("\n-- ").append(line);
+                report.append("\n-- ").append(line);
             }
         }
     }

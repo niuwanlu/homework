@@ -15,10 +15,12 @@ public class ParkingMan implements Packer{
         this.parkingLots = parkingLots;
     }
 
+    @Override
     public String park(String plateNum) {
         return finder.getParkingLot(parkingLots).park(plateNum);
     }
 
+    @Override
     public String getCar(String serialNum) {
         for (ParkingLot parkingLot : parkingLots) {
             String plateNum = parkingLot.leave(serialNum);

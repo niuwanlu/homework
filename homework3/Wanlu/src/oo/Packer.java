@@ -1,7 +1,7 @@
 package oo;
 
 public interface Packer {
-    String park(String plateNumer);
+    String park(String plateNum);
 
     String getCar(String serialNum);
 
